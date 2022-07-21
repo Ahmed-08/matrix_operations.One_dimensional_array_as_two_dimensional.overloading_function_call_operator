@@ -14,16 +14,19 @@ public:
     Matrix(Matrix<T>&& mat);
     ~Matrix();
 
+    // заполнение массива
     Matrix& randomize(int start, int end);
 
+    // след
     T trace();
 
+    // транспонирование
     Matrix& transpose();
 
-    int det(const Matrix<T> mat, int size);
+    // определитель
+    T det(const Matrix<T> mat, int size);
+    // получение матрицы без строки и столбца
     void matrixWithoutRowAndCol(Matrix<T>& matrix, int size, int row, int col, Matrix<T>& newMatrix);
-
-    T* getArr()const{return this->arr_;}
 
     Matrix& operator=(const Matrix<T>& mat);
 
@@ -74,7 +77,12 @@ template<typename T>
 Matrix<T>::Matrix(Matrix<T>&& mat): row_{mat.row_}, col_{mat.col_}
 {
     this->arr_ = mat.arr_;
+    this->row_ = mat.row_;
+    this->col_ = mat.col_;
+    
     mat.arr_ = nullptr;
+    mat.row_ = 0;
+    mat.col_ = 0;
 };
 
 template<typename T>
@@ -232,7 +240,7 @@ void Matrix<T>::matrixWithoutRowAndCol(Matrix<T>& matrix, int size, int row, int
 }
 
 template<typename T>
-int Matrix<T>::det(Matrix<T> mat, int size)
+T Matrix<T>::det(Matrix<T> mat, int size)
 {
     assert(this->row_ == this->col_ && "The matrix must to be squre!");
 

@@ -10,11 +10,11 @@ int main()
 
     Matrix<int> mat(9, 9);
     mat.randomize(-10, 20);
-    std::cout << mat << std::endl;
+    std::cout << "mat:\n" << mat << std::endl;
     std::cout << "transpose mat:\n\n";
     mat.transpose();
     std::cout << mat << std::endl;
-    std::cout << "Sled mat1 = " << mat.trace();
+    std::cout << "Sled mat = " << mat.trace();
     std::cout << "\n---------------------------------------------\n";
 
     Matrix<int> mat1(3, 3), mat2(3, 3);
@@ -33,7 +33,7 @@ int main()
     std::cout << "mat3, mat4: \n";
     std::cout << mat3 << "\n" << mat4 << "\n\n";
     mat = mat3 * mat4;
-    std::cout << "mat1 * mat2\n";
+    std::cout << "mat3 * mat4\n";
     std::cout << mat;
     std::cout << "\n---------------------------------------------\n";
 
